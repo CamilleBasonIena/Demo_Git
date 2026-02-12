@@ -1,0 +1,1 @@
+SELECT {EXCEPT([A_Month].[A_Month].LEVELS(0).MEMBERS , {[A_Month].[A_Month].[Forecast],[A_Month].[A_Month].[YTD]})} ON 0, {TM1TOGGLEEXPANDMODE({[A_Account].[A_Account].LEVELS(0).MEMBERS}, EXPAND_ABOVE)} ON 1 FROM [A_Balance Sheet] WHERE ([A_Organization].[A_Organization].[Total Company], [A_Year].[A_Year].[Y3], [B_Change].[B_Change].[Balance], [A_Version].[A_Version].[Actual])

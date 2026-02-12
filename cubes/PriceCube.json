@@ -1,0 +1,25 @@
+{
+	"@type":"Cube",
+	"Name":"PriceCube",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('actvsbud')"
+		},
+		{
+			"@id":"Dimensions('region')"
+		},
+		{
+			"@id":"Dimensions('model')"
+		},
+		{
+			"@id":"Dimensions('month')"
+		}
+	],
+	"Views@Code.links":
+	[
+		"PriceCube.views/01.json",
+		"PriceCube.views/03 - France.json",
+		"PriceCube.views/defaut.json"
+	]
+}

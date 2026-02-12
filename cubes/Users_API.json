@@ -1,0 +1,14 @@
+{
+	"@type":"Cube",
+	"Name":"Users_API",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('ID_API')"
+		},
+		{
+			"@id":"Dimensions('}Clients')"
+		}
+	],
+	"Views@Code.links":[]
+}

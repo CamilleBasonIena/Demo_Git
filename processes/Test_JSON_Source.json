@@ -1,0 +1,14 @@
+{
+	"@type":"Process",
+	"Name":"Test_JSON_Source",
+	"HasSecurityAccess":false,
+	"DataSource":
+	{
+		"Type":"JSON",
+		"dataSourceNameForServer":"data_structure.json",
+		"jsonRootPointer":"/Axes",
+		"jsonVariableMapping":""
+	},
+	"Parameters":[],
+	"Variables":[]
+}

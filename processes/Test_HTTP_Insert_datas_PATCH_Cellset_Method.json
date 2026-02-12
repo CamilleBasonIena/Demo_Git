@@ -1,0 +1,12 @@
+{
+	"@type":"Process",
+	"Name":"Test_HTTP_Insert_datas_PATCH_Cellset_Method",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"Test_HTTP_Insert_datas_PATCH_Cellset_Method.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":[],
+	"Variables":[]
+}

@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Closed Versions",
+	"Alias":"Caption",
+	"Expression":"{EXCEPT(DRILLDOWNMEMBER({[A_Version].[A_Version].[Archived Versions]} , {[A_Version].[A_Version].[Archived Versions]} , RECURSIVE) , {[A_Version].[A_Version].[Archived Versions]})}"
+}

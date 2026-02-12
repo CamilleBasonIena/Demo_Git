@@ -1,0 +1,56 @@
+#region Prolog
+###############################
+### Works Only for LEAF levels  ###
+###############################
+
+vNow     = TIMST (NOW(), '\Y\m\d\h\i\s' );
+# User infos
+vUser = 'apikey';
+vAPIKey = 'azE6dXNyX2RjYzBmZWY4LTBmYjktM2M0NS1hMmQ2LWRhYWNmYzJhMjYzMDo4OEQ1czBPL0ZYNkFKMG1QS3lwZzhKbVZIaHVaUlBUL2Y1ckhJejF5Q3dJPTpoT09D' ;
+vCredentials = vUser | ':' | vAPIKey;
+# Env infos
+vHost ='https://eu-central-1.planninganalytics.saas.ibm.com';
+vTenant = 'DDZZBR27IKOU' ;
+vDBS = 'Region03';
+vDBT = 'Test_Git' ;
+ 
+################## retreive source datas ################## 
+# Test POST 
+sTokenUrlS = vHost| '/api/'| vTenant | '/v0/tm1/' | vDBS | '/api/v1/Cubes('|CHAR(39)|'A_Balance Sheet'|CHAR(39)|')/Views('|CHAR(39)|'BigData'|CHAR(39)|')/tm1.Execute?$expand=Cells($select=Ordinal,Value)' ;
+ExecuteHttpRequest( 'POST', sTokenUrlS , '-u '| vCredentials , '-h Content-Type:application/json; charset=utf-8' );
+
+nResponseCodeS = HttpResponseGetStatusCode();
+sResponseBodyS  =HttpResponseGetBody();
+#sResponseBodyShort = SUBST( sResponseBodyS, 1, 10000);
+
+#sJson  = JsonToString( HttpResponseGetBody());
+#sJson = Base64Encode( HttpResponseGetBody());
+#sJson =JsonAdd( HttpResponseGetBody(), 'Cells', '\n' );
+
+# # Get the Axes and cells datas
+nGetDatas = SCAN( '"Cells":', sResponseBodyS );
+sGetDatas = SUBST( sResponseBodyS , nGetDatas +8 , LONG(sResponseBodyS) - nGetDatas -8 );
+#ASCIIOutput('/Output/body_POST_CCE.json',NumberToString( LONG(sResponseBodyS)), sResponseBodyS);
+
+#ASCIIOutput('/Output/body_POST_CCE.json',sResponseBodyShort);
+
+######################
+# Get the target CellsetID
+sTokenUrlCellsetID = vHost| '/api/'| vTenant | '/v0/tm1/' | vDBT | '/api/v1/Cubes('|CHAR(39)|'A_Balance Sheet'|CHAR(39)|')/Views('|CHAR(39)|'BigData'|CHAR(39)|')/tm1.Execute';
+ExecuteHttpRequest( 'POST', sTokenUrlCellsetID , '-u '| vCredentials , '-h Content-Type:application/json' );
+# Parse body to get the cellsetID
+sResponseBodyCellsetID = HttpResponseGetBody();
+nResponseCodeCellsetID = HttpResponseGetStatusCode();
+nGetCellsetID = SCAN( '"ID":' , sResponseBodyCellsetID); 
+sGetCellsetID =SUBST( sResponseBodyCellsetID, nGetCellsetID +6 , (LONG(sResponseBodyCellsetID) - nGetCellsetID) -7);
+#ASCIIOutput('/Output/body_POST_CCE.json', NumberToString( nGetCellsetID) , NumberToString( nResponseCodeCellsetID) , NumberToString( LONG(sResponseBodyCellsetID) ) , sGetCellsetID );
+
+# Send data in target using the cellsetID previously retrieved
+sTokenUrlT = vHost| '/api/'| vTenant | '/v0/tm1/' | vDBT | '/api/v1/Cellsets('|CHAR(39)|sGetCellsetID|CHAR(39)|')/Cells';
+ExecuteHttpRequest( 'PATCH', sTokenUrlT ,  '-k' ,  '-u '| vCredentials ,  '-h Content-Type:application/json' , '-d '| sGetDatas );
+#nResponseCode = HttpResponseGetStatusCode();
+
+#ASCIIOutput('/Output/body_POST_CCE.json', NumberToString(nResponseCode) );
+
+
+#endregion

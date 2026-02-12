@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Non EUR Currency",
+	"Alias":"Caption",
+	"Expression":"{FILTER(TM1SubsetToSet([A_Organization].[A_Organization] , \"Default\" , \"public\") , ([A_Organization].[A_Organization].CURRENTMEMBER.PROPERTIES(\"Currency\") <> \"EUR\"))}"
+}

@@ -1,0 +1,17 @@
+{
+	"@type":"MDXView",
+	"Name":"BigData",
+	"MDX@Code.link":"BigData.mdx",
+	"Meta": {
+		"Aliases": {},
+		"ExpandAboves": {
+			"[B_Change].[B_Change]": false,
+			"[A_Account].[A_Account]": true,
+			"[A_Organization].[A_Organization]": false,
+			"[A_Year].[A_Year]": false,
+			"[A_Version].[A_Version]": false,
+			"[A_Month].[A_Month]": false
+		},
+		"ContextSets": {}
+	}
+}

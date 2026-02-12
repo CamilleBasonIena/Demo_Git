@@ -1,0 +1,5 @@
+{
+	"@type":"Subset",
+	"Name":"MTD",
+	"Expression":"{{DESCENDANTS([A_Month].[A_Month].[Year])}}"
+}

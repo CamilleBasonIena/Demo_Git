@@ -1,0 +1,5 @@
+{
+	"@type":"Subset",
+	"Name":"Marketing",
+	"Expression":"{EXCEPT(DRILLDOWNMEMBER({[A_Account].[A_Account].[6499]} , {[A_Account].[A_Account].[6499]} , RECURSIVE) , {[A_Account].[A_Account].[6499]})}"
+}

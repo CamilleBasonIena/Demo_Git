@@ -1,0 +1,2172 @@
+{
+	"@type":"Hierarchy",
+	"Name":"A_Account",
+	"Elements":
+	[
+		{
+			"Name":"Statistics",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Metrics",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Allocation Methods",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"NP",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"4999",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"5999",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"TE",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"6099",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"6000",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6010",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6020",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6199",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"6100",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6110",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6120",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6130",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6140",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6150",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6299",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"6200",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6210",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6220",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6230",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6399",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"6300",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6310",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6320",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6499",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"6400",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6410",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6599",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"6699",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"NPAA",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"6610",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6520",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6510",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Square Footage",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Server Space",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6005",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6015",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"FTE",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Rev per FTE",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cost per FTE",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"EPS",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Shares",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"RFIN",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"BS",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Human Metrics",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Employee survey",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Training days",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Employee ranking",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Sick days taken",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Employee termination",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Succession ready",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Recruitment days",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Internal Process Metrics",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Inventory Turn",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Orders",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Returns",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Marketing Metrics",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Customer count",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Product count",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Customer survey",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Product survey",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Campaign count",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Training cost",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Orders (E-mail)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Orders (Sales visit)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Orders (Special)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Orders (Telephone)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Orders (Web)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Returns (Defective product)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Returns (Incomplete product)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Returns (Unsatisfactory product)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Returns (Wrong product ordered)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Returns (Wrong product shipped)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Units Sold",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Unit price",
+			"Type":"Numeric"
+		},
+		{
+			"Name":".",
+			"Type":"String"
+		},
+		{
+			"Name":"Trial Balance",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"FLOW - OPERATING OPERATIVES",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accounts receivable",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accounts receivable - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Sales",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Receipts from customers",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accounts receivable - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Days sales outstanding",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inventory",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Raw materials inventory - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Raw materials consumed",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Raw materials purchased",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Raw materials inventory - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Days raw materials outstanding",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accounts payable",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accounts payable - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Purchases",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Payments to suppliers",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accounts payable - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Days purchases outstanding",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accrued expenses",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accrued expenses - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Selling and adm Expenses",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accrued expenses paid",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accrued expenses - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Labor accrual",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Labor accrual - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Manufacturing labor",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Labor cost paid",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Labor accrual - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Days accrual outstanding",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cash paid to suppliers and employees",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest payable:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest payable - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest accrued",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest paid",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest payable - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Income taxes payable:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Income taxes payable - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Income taxes accrued",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Transfers (to)/from deferred taxes",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Incomes taxes net (hide)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Income taxes paid",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Income taxes payable - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Deferred taxes:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Deferred taxes - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Transfers (from)/to income taxes",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Deferred taxes - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PPE - depreciation and amortization:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PPE accumulated depreciation - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Depreciation and amortization",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PPE accumulated depreciation - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"FLOW - INVESTING ACTIVITIES",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Capital expenditures:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Property, plant and equipment (PPE) - cost:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PPE cost - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Capital expenditures",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PPE cost - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"FLOW - FINANCING ACTIVITIES",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Short term borrowings:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Short term borrowings - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Short term borrowings added",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Short term borrowings paid",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Short term borrowings - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Long term debt:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Long term debt - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Long term debt - proceeds",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Long term debt - payments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Long term debt - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Common stock:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Common stock - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Common stock - issued",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Common stock - end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Balance Sheet",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Check",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Total Assets",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Assets:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Property, plant and equipment - net",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Property, plant and equipment - cost",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accumulated depreciation",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Current Assets",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Inventories",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Quick Assets",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Cash and cash equivalents",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Total liabilities and stockholders equity",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Stockholders' equity:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Total stockholders equity",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Capital stock",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Retained earnings",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Liabilities:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Total liabilities",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Long term debt",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Deferred taxes",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Current Liabilities",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Short-term debt",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Income taxes payable",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest payable",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accrued labor costs",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Common Shares Outstanding",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Options Outstanding",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Net Working Capital",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Cash Flow (Direct Method)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Net Increase/(Decrease) in cash and equivalents (Direct Method)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Net cash from/(used in) operating activities",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Cash received from customers",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest paid (net of amount capitalized)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Net cash from/(used in) investing activities",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Net cash from/(used in) financing activities",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Net borrowings under line of credit agreement",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Net proceeds issuance/repayment of long term debt",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Proceeds from issuance of common stock",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cash and cash equivalents at beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cash and cash equivalents at end of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cash Flow (Indirect Method)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Net increase/(decrease) in cash and equivalents (Indirect Method)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Net cash povided by operating activities",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Net Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Total adjustments",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Change in assets and liabilities:",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"(Increase)/decrease in receivables",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"(Increase)/decrease in inventory",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Increase/(decrease) in payables",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Increase/(decrease) in accrued expenses",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Increase/(decrease) in income taxes payable",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Increase/(decrease) in interest payable",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Increase/(decrease) in deferred taxes payable",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Check CF",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Cash and cash equivalents at end of period (Indirect Method)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Retained earnings - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cumulative Retain Earnings",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"NI + Retained earnings - beginning of period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6700",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6999",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"6950",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Bank overdrafts",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Drivers",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Number of PC's",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"# of Cell Phones",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"# of Office Phones (65% of Headcount)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"# of Trip Nights",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"# of Trip Days with Rental Car",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"ROC",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"6530",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"7700",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"7610",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"QPME",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"4998",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"ROCCL",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6600",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"7600",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"RFINCL",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6960",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"NPBT",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"7998",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"6620",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"777777",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Statistics",
+			"ComponentName":"Retained earnings - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Statistics",
+			"ComponentName":"Cumulative Retain Earnings",
+			"Weight":1
+		},
+		{
+			"ParentName":"Statistics",
+			"ComponentName":"NI + Retained earnings - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Statistics",
+			"ComponentName":"BS",
+			"Weight":0
+		},
+		{
+			"ParentName":"Statistics",
+			"ComponentName":"Allocation Methods",
+			"Weight":0
+		},
+		{
+			"ParentName":"Statistics",
+			"ComponentName":"Metrics",
+			"Weight":0
+		},
+		{
+			"ParentName":"Metrics",
+			"ComponentName":"Marketing Metrics",
+			"Weight":1
+		},
+		{
+			"ParentName":"Metrics",
+			"ComponentName":"Internal Process Metrics",
+			"Weight":0
+		},
+		{
+			"ParentName":"Metrics",
+			"ComponentName":"Human Metrics",
+			"Weight":0
+		},
+		{
+			"ParentName":"Metrics",
+			"ComponentName":"Drivers",
+			"Weight":1
+		},
+		{
+			"ParentName":"Metrics",
+			"ComponentName":"EPS",
+			"Weight":0
+		},
+		{
+			"ParentName":"Metrics",
+			"ComponentName":"Shares",
+			"Weight":0
+		},
+		{
+			"ParentName":"Metrics",
+			"ComponentName":"Units Sold",
+			"Weight":1
+		},
+		{
+			"ParentName":"Metrics",
+			"ComponentName":"Unit price",
+			"Weight":1
+		},
+		{
+			"ParentName":"Allocation Methods",
+			"ComponentName":"Square Footage",
+			"Weight":0
+		},
+		{
+			"ParentName":"Allocation Methods",
+			"ComponentName":"Server Space",
+			"Weight":0
+		},
+		{
+			"ParentName":"NP",
+			"ComponentName":"NPBT",
+			"Weight":1
+		},
+		{
+			"ParentName":"NP",
+			"ComponentName":"6999",
+			"Weight":-1
+		},
+		{
+			"ParentName":"NP",
+			"ComponentName":"QPME",
+			"Weight":1
+		},
+		{
+			"ParentName":"NP",
+			"ComponentName":"7998",
+			"Weight":1
+		},
+		{
+			"ParentName":"TE",
+			"ComponentName":"6099",
+			"Weight":1
+		},
+		{
+			"ParentName":"TE",
+			"ComponentName":"6299",
+			"Weight":1
+		},
+		{
+			"ParentName":"TE",
+			"ComponentName":"6399",
+			"Weight":1
+		},
+		{
+			"ParentName":"TE",
+			"ComponentName":"6499",
+			"Weight":1
+		},
+		{
+			"ParentName":"TE",
+			"ComponentName":"6199",
+			"Weight":1
+		},
+		{
+			"ParentName":"TE",
+			"ComponentName":"6599",
+			"Weight":1
+		},
+		{
+			"ParentName":"6099",
+			"ComponentName":"6000",
+			"Weight":1
+		},
+		{
+			"ParentName":"6099",
+			"ComponentName":"6005",
+			"Weight":1
+		},
+		{
+			"ParentName":"6099",
+			"ComponentName":"6010",
+			"Weight":1
+		},
+		{
+			"ParentName":"6099",
+			"ComponentName":"6015",
+			"Weight":1
+		},
+		{
+			"ParentName":"6099",
+			"ComponentName":"6020",
+			"Weight":1
+		},
+		{
+			"ParentName":"6199",
+			"ComponentName":"6100",
+			"Weight":1
+		},
+		{
+			"ParentName":"6199",
+			"ComponentName":"6110",
+			"Weight":1
+		},
+		{
+			"ParentName":"6199",
+			"ComponentName":"6120",
+			"Weight":1
+		},
+		{
+			"ParentName":"6199",
+			"ComponentName":"6130",
+			"Weight":1
+		},
+		{
+			"ParentName":"6199",
+			"ComponentName":"6140",
+			"Weight":1
+		},
+		{
+			"ParentName":"6199",
+			"ComponentName":"6150",
+			"Weight":1
+		},
+		{
+			"ParentName":"6299",
+			"ComponentName":"6200",
+			"Weight":1
+		},
+		{
+			"ParentName":"6299",
+			"ComponentName":"6210",
+			"Weight":1
+		},
+		{
+			"ParentName":"6299",
+			"ComponentName":"6220",
+			"Weight":1
+		},
+		{
+			"ParentName":"6299",
+			"ComponentName":"6230",
+			"Weight":1
+		},
+		{
+			"ParentName":"6399",
+			"ComponentName":"6300",
+			"Weight":1
+		},
+		{
+			"ParentName":"6399",
+			"ComponentName":"6310",
+			"Weight":1
+		},
+		{
+			"ParentName":"6399",
+			"ComponentName":"6320",
+			"Weight":1
+		},
+		{
+			"ParentName":"6499",
+			"ComponentName":"6400",
+			"Weight":1
+		},
+		{
+			"ParentName":"6499",
+			"ComponentName":"6410",
+			"Weight":1
+		},
+		{
+			"ParentName":"6599",
+			"ComponentName":"6510",
+			"Weight":1
+		},
+		{
+			"ParentName":"6599",
+			"ComponentName":"6520",
+			"Weight":1
+		},
+		{
+			"ParentName":"6599",
+			"ComponentName":"6530",
+			"Weight":1
+		},
+		{
+			"ParentName":"6699",
+			"ComponentName":"6610",
+			"Weight":1
+		},
+		{
+			"ParentName":"6699",
+			"ComponentName":"6620",
+			"Weight":1
+		},
+		{
+			"ParentName":"NPAA",
+			"ComponentName":"NP",
+			"Weight":1
+		},
+		{
+			"ParentName":"NPAA",
+			"ComponentName":"6699",
+			"Weight":-1
+		},
+		{
+			"ParentName":"RFIN",
+			"ComponentName":"6700",
+			"Weight":-1
+		},
+		{
+			"ParentName":"RFIN",
+			"ComponentName":"6600",
+			"Weight":-1
+		},
+		{
+			"ParentName":"RFIN",
+			"ComponentName":"7700",
+			"Weight":1
+		},
+		{
+			"ParentName":"RFIN",
+			"ComponentName":"7610",
+			"Weight":1
+		},
+		{
+			"ParentName":"RFIN",
+			"ComponentName":"7600",
+			"Weight":1
+		},
+		{
+			"ParentName":"RFIN",
+			"ComponentName":"RFINCL",
+			"Weight":1
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"Employee survey",
+			"Weight":0
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"Training days",
+			"Weight":0
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"Training cost",
+			"Weight":0
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"Employee ranking",
+			"Weight":0
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"Sick days taken",
+			"Weight":0
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"Employee termination",
+			"Weight":0
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"Succession ready",
+			"Weight":0
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"Recruitment days",
+			"Weight":0
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"FTE",
+			"Weight":0
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"Rev per FTE",
+			"Weight":0
+		},
+		{
+			"ParentName":"Human Metrics",
+			"ComponentName":"Cost per FTE",
+			"Weight":0
+		},
+		{
+			"ParentName":"Internal Process Metrics",
+			"ComponentName":"Inventory Turn",
+			"Weight":1
+		},
+		{
+			"ParentName":"Internal Process Metrics",
+			"ComponentName":"Orders",
+			"Weight":0
+		},
+		{
+			"ParentName":"Internal Process Metrics",
+			"ComponentName":"Returns",
+			"Weight":0
+		},
+		{
+			"ParentName":"Orders",
+			"ComponentName":"Orders (E-mail)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Orders",
+			"ComponentName":"Orders (Sales visit)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Orders",
+			"ComponentName":"Orders (Special)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Orders",
+			"ComponentName":"Orders (Telephone)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Orders",
+			"ComponentName":"Orders (Web)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Returns",
+			"ComponentName":"Returns (Defective product)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Returns",
+			"ComponentName":"Returns (Incomplete product)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Returns",
+			"ComponentName":"Returns (Unsatisfactory product)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Returns",
+			"ComponentName":"Returns (Wrong product ordered)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Returns",
+			"ComponentName":"Returns (Wrong product shipped)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Marketing Metrics",
+			"ComponentName":"Customer count",
+			"Weight":0
+		},
+		{
+			"ParentName":"Marketing Metrics",
+			"ComponentName":"Product count",
+			"Weight":0
+		},
+		{
+			"ParentName":"Marketing Metrics",
+			"ComponentName":"Customer survey",
+			"Weight":0
+		},
+		{
+			"ParentName":"Marketing Metrics",
+			"ComponentName":"Product survey",
+			"Weight":0
+		},
+		{
+			"ParentName":"Marketing Metrics",
+			"ComponentName":"Campaign count",
+			"Weight":0
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"FLOW - OPERATING OPERATIVES",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Accounts receivable",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Accounts receivable - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Sales",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Receipts from customers",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Accounts receivable - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Days sales outstanding",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Inventory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Raw materials inventory - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Raw materials consumed",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Raw materials purchased",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Raw materials inventory - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Days raw materials outstanding",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Accounts payable",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Accounts payable - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Purchases",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Payments to suppliers",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Accounts payable - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Days purchases outstanding",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Accrued expenses",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Accrued expenses - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Selling and adm Expenses",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Accrued expenses paid",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Accrued expenses - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Labor accrual",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Labor accrual - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Manufacturing labor",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Labor cost paid",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Labor accrual - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Days accrual outstanding",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Cash paid to suppliers and employees",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Interest payable:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Interest payable - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Interest accrued",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Interest paid",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Interest payable - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Income taxes payable:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Income taxes payable - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Income taxes accrued",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Transfers (to)/from deferred taxes",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Incomes taxes net (hide)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Income taxes paid",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Income taxes payable - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Deferred taxes:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Deferred taxes - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Transfers (from)/to income taxes",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Deferred taxes - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"PPE - depreciation and amortization:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"PPE accumulated depreciation - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Depreciation and amortization",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"PPE accumulated depreciation - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"FLOW - INVESTING ACTIVITIES",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Capital expenditures:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Property, plant and equipment (PPE) - cost:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"PPE cost - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Capital expenditures",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"PPE cost - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"FLOW - FINANCING ACTIVITIES",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Short term borrowings:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Short term borrowings - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Short term borrowings added",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Short term borrowings paid",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Short term borrowings - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Long term debt:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Long term debt - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Long term debt - proceeds",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Long term debt - payments",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Long term debt - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Common stock:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Common stock - beginning of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Common stock - issued",
+			"Weight":1
+		},
+		{
+			"ParentName":"Trial Balance",
+			"ComponentName":"Common stock - end of period",
+			"Weight":1
+		},
+		{
+			"ParentName":"Balance Sheet",
+			"ComponentName":"Check",
+			"Weight":1
+		},
+		{
+			"ParentName":"Balance Sheet",
+			"ComponentName":"Net Working Capital",
+			"Weight":0
+		},
+		{
+			"ParentName":"Balance Sheet",
+			"ComponentName":"Common Shares Outstanding",
+			"Weight":0
+		},
+		{
+			"ParentName":"Balance Sheet",
+			"ComponentName":"Options Outstanding",
+			"Weight":1
+		},
+		{
+			"ParentName":"Check",
+			"ComponentName":"Total Assets",
+			"Weight":1
+		},
+		{
+			"ParentName":"Check",
+			"ComponentName":"Total liabilities and stockholders equity",
+			"Weight":-1
+		},
+		{
+			"ParentName":"Total Assets",
+			"ComponentName":"Assets:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total Assets",
+			"ComponentName":"Property, plant and equipment - net",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total Assets",
+			"ComponentName":"Current Assets",
+			"Weight":1
+		},
+		{
+			"ParentName":"Property, plant and equipment - net",
+			"ComponentName":"Property, plant and equipment - cost",
+			"Weight":1
+		},
+		{
+			"ParentName":"Property, plant and equipment - net",
+			"ComponentName":"Accumulated depreciation",
+			"Weight":-1
+		},
+		{
+			"ParentName":"Current Assets",
+			"ComponentName":"Inventories",
+			"Weight":1
+		},
+		{
+			"ParentName":"Current Assets",
+			"ComponentName":"Quick Assets",
+			"Weight":1
+		},
+		{
+			"ParentName":"Quick Assets",
+			"ComponentName":"Accounts receivable",
+			"Weight":1
+		},
+		{
+			"ParentName":"Quick Assets",
+			"ComponentName":"Cash and cash equivalents",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total liabilities and stockholders equity",
+			"ComponentName":"Stockholders' equity:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total liabilities and stockholders equity",
+			"ComponentName":"Total stockholders equity",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total liabilities and stockholders equity",
+			"ComponentName":"Liabilities:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total liabilities and stockholders equity",
+			"ComponentName":"Total liabilities",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total stockholders equity",
+			"ComponentName":"Capital stock",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total stockholders equity",
+			"ComponentName":"Retained earnings",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total liabilities",
+			"ComponentName":"Long term debt",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total liabilities",
+			"ComponentName":"Deferred taxes",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total liabilities",
+			"ComponentName":"Current Liabilities",
+			"Weight":1
+		},
+		{
+			"ParentName":"Current Liabilities",
+			"ComponentName":"Accounts payable",
+			"Weight":1
+		},
+		{
+			"ParentName":"Current Liabilities",
+			"ComponentName":"Short-term debt",
+			"Weight":1
+		},
+		{
+			"ParentName":"Current Liabilities",
+			"ComponentName":"Accrued expenses",
+			"Weight":1
+		},
+		{
+			"ParentName":"Current Liabilities",
+			"ComponentName":"Accrued labor costs",
+			"Weight":1
+		},
+		{
+			"ParentName":"Current Liabilities",
+			"ComponentName":"Income taxes payable",
+			"Weight":1
+		},
+		{
+			"ParentName":"Current Liabilities",
+			"ComponentName":"Interest payable",
+			"Weight":1
+		},
+		{
+			"ParentName":"Current Liabilities",
+			"ComponentName":"Bank overdrafts",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net Working Capital",
+			"ComponentName":"Quick Assets",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net Working Capital",
+			"ComponentName":"Current Liabilities",
+			"Weight":-1
+		},
+		{
+			"ParentName":"Cash Flow (Direct Method)",
+			"ComponentName":"Net Increase/(Decrease) in cash and equivalents (Direct Method)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cash Flow (Direct Method)",
+			"ComponentName":"Cash and cash equivalents at beginning of period",
+			"Weight":0
+		},
+		{
+			"ParentName":"Cash Flow (Direct Method)",
+			"ComponentName":"Cash and cash equivalents at end of period",
+			"Weight":0
+		},
+		{
+			"ParentName":"Net Increase/(Decrease) in cash and equivalents (Direct Method)",
+			"ComponentName":"Net cash from/(used in) operating activities",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net Increase/(Decrease) in cash and equivalents (Direct Method)",
+			"ComponentName":"Net cash from/(used in) investing activities",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net Increase/(Decrease) in cash and equivalents (Direct Method)",
+			"ComponentName":"Net cash from/(used in) financing activities",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net cash from/(used in) operating activities",
+			"ComponentName":"Income taxes paid",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net cash from/(used in) operating activities",
+			"ComponentName":"Cash paid to suppliers and employees",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net cash from/(used in) operating activities",
+			"ComponentName":"Cash received from customers",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net cash from/(used in) operating activities",
+			"ComponentName":"Interest paid (net of amount capitalized)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net cash from/(used in) investing activities",
+			"ComponentName":"Capital expenditures",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net cash from/(used in) financing activities",
+			"ComponentName":"Net borrowings under line of credit agreement",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net cash from/(used in) financing activities",
+			"ComponentName":"Net proceeds issuance/repayment of long term debt",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net cash from/(used in) financing activities",
+			"ComponentName":"Proceeds from issuance of common stock",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cash Flow (Indirect Method)",
+			"ComponentName":"Net increase/(decrease) in cash and equivalents (Indirect Method)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cash Flow (Indirect Method)",
+			"ComponentName":"Cash and cash equivalents at beginning of period",
+			"Weight":0
+		},
+		{
+			"ParentName":"Net increase/(decrease) in cash and equivalents (Indirect Method)",
+			"ComponentName":"Net cash povided by operating activities",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net increase/(decrease) in cash and equivalents (Indirect Method)",
+			"ComponentName":"Net cash from/(used in) investing activities",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net increase/(decrease) in cash and equivalents (Indirect Method)",
+			"ComponentName":"Net cash from/(used in) financing activities",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net cash povided by operating activities",
+			"ComponentName":"Net Income",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net cash povided by operating activities",
+			"ComponentName":"Total adjustments",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total adjustments",
+			"ComponentName":"Depreciation and amortization",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total adjustments",
+			"ComponentName":"Change in assets and liabilities:",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total adjustments",
+			"ComponentName":"(Increase)/decrease in receivables",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total adjustments",
+			"ComponentName":"(Increase)/decrease in inventory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total adjustments",
+			"ComponentName":"Increase/(decrease) in payables",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total adjustments",
+			"ComponentName":"Increase/(decrease) in accrued expenses",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total adjustments",
+			"ComponentName":"Increase/(decrease) in income taxes payable",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total adjustments",
+			"ComponentName":"Increase/(decrease) in interest payable",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total adjustments",
+			"ComponentName":"Increase/(decrease) in deferred taxes payable",
+			"Weight":1
+		},
+		{
+			"ParentName":"Check CF",
+			"ComponentName":"Cash and cash equivalents at end of period (Indirect Method)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Check CF",
+			"ComponentName":"Cash and cash equivalents at end of period",
+			"Weight":0
+		},
+		{
+			"ParentName":"6999",
+			"ComponentName":"6950",
+			"Weight":1
+		},
+		{
+			"ParentName":"6999",
+			"ComponentName":"6960",
+			"Weight":1
+		},
+		{
+			"ParentName":"Drivers",
+			"ComponentName":"Number of PC's",
+			"Weight":1
+		},
+		{
+			"ParentName":"Drivers",
+			"ComponentName":"# of Cell Phones",
+			"Weight":1
+		},
+		{
+			"ParentName":"Drivers",
+			"ComponentName":"# of Office Phones (65% of Headcount)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Drivers",
+			"ComponentName":"# of Trip Nights",
+			"Weight":1
+		},
+		{
+			"ParentName":"Drivers",
+			"ComponentName":"# of Trip Days with Rental Car",
+			"Weight":1
+		},
+		{
+			"ParentName":"ROC",
+			"ComponentName":"777777",
+			"Weight":1
+		},
+		{
+			"ParentName":"ROC",
+			"ComponentName":"4999",
+			"Weight":1
+		},
+		{
+			"ParentName":"ROC",
+			"ComponentName":"4998",
+			"Weight":1
+		},
+		{
+			"ParentName":"ROC",
+			"ComponentName":"5999",
+			"Weight":-1
+		},
+		{
+			"ParentName":"ROC",
+			"ComponentName":"TE",
+			"Weight":-1
+		},
+		{
+			"ParentName":"ROC",
+			"ComponentName":"ROCCL",
+			"Weight":1
+		},
+		{
+			"ParentName":"NPBT",
+			"ComponentName":"ROC",
+			"Weight":1
+		},
+		{
+			"ParentName":"NPBT",
+			"ComponentName":"RFIN",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"A_Account.subsets/All Members.json",
+		"A_Account.subsets/BalanceSheet.json",
+		"A_Account.subsets/CashFlowDirect.json",
+		"A_Account.subsets/CashFlowInDirect.json",
+		"A_Account.subsets/Comptes.json",
+		"A_Account.subsets/Default.json",
+		"A_Account.subsets/Drivers.json",
+		"A_Account.subsets/IC Account.json",
+		"A_Account.subsets/Leaf Level.json",
+		"A_Account.subsets/Leaf Level_CR.json",
+		"A_Account.subsets/Marketing.json",
+		"A_Account.subsets/MultiLines.json",
+		"A_Account.subsets/Operating Expenses Summary.json",
+		"A_Account.subsets/Opex - Liste.json",
+		"A_Account.subsets/P&L Detail.json",
+		"A_Account.subsets/P&L Summary.json",
+		"A_Account.subsets/Profile.json",
+		"A_Account.subsets/Statistics.json",
+		"A_Account.subsets/TrialBalance.json"
+	]
+}

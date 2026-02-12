@@ -1,0 +1,7 @@
+{
+	"@type":"Subset",
+	"Name":"Mensualisation",
+	"ExpandAbove":true,
+	"Alias":"Caption",
+	"Expression":"{[A_Month].[A_Month].[BaseLine],[A_Month].[A_Month].[Adjustment],[A_Month].[A_Month].[% Change],[A_Month].[A_Month].[Full Year Cost],[A_Month].[A_Month].[DriverOrProfile],[A_Month].[A_Month].[Explanation],{DISTINCT({DESCENDANTS([A_Month].[A_Month].[Year])})}}"
+}

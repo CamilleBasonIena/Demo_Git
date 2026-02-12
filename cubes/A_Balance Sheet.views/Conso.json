@@ -1,0 +1,37 @@
+{
+	"@type":"MDXView",
+	"Name":"Conso",
+	"MDX@Code.link":"Conso.mdx",
+	"Meta": {
+		"Aliases": {
+			"[A_Organization].[A_Organization]": "Caption",
+			"[A_Year].[A_Year]": "Caption",
+			"[A_Version].[A_Version]": "Caption"
+		},
+		"ExpandAboves": {
+			"[B_Change].[B_Change]": false,
+			"[A_Account].[A_Account]": true,
+			"[A_Organization].[A_Organization]": false,
+			"[A_Year].[A_Year]": false,
+			"[A_Version].[A_Version]": false,
+			"[A_Month].[A_Month]": false
+		},
+		"ContextSets": {
+			"[B_Change].[B_Change]": {
+				"Expression": "{[B_Change].[B_Change].MEMBERS}"
+			},
+			"[A_Organization].[A_Organization]": {
+				"SubsetName": "Default",
+				"IsPublic": true
+			},
+			"[A_Year].[A_Year]": {
+				"SubsetName": "Default",
+				"IsPublic": true
+			},
+			"[A_Version].[A_Version]": {
+				"SubsetName": "Default",
+				"IsPublic": true
+			}
+		}
+	}
+}

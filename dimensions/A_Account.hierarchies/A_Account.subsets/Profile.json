@@ -1,0 +1,7 @@
+{
+	"@type":"Subset",
+	"Name":"Profile",
+	"ExpandAbove":true,
+	"Alias":"Caption",
+	"Expression":"{{FILTER(TM1SubsetAll([A_Account].[A_Account]), ([A_Account].[A_Account].CURRENTMEMBER.PROPERTIES(\"Profile\") = \"Yes\"))}}"
+}

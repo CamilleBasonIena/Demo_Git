@@ -1,0 +1,14 @@
+{
+	"@type":"Cube",
+	"Name":"}HierarchyAttributes_A_Version",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}Hierarchies_A_Version')"
+		},
+		{
+			"@id":"Dimensions('}HierarchyAttributes_A_Version')"
+		}
+	],
+	"Views@Code.links":[]
+}

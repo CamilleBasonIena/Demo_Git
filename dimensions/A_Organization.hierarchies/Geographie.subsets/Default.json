@@ -1,0 +1,5 @@
+{
+	"@type":"Subset",
+	"Name":"Default",
+	"Expression":"[A_Organization].[Geographie].MEMBERS"
+}

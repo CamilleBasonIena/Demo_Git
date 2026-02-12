@@ -1,0 +1,11 @@
+{
+	"@type":"Subset",
+	"Name":"Current",
+	"Alias":"Caption",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('A_Month')/Hierarchies('A_Month')/Elements('May')"
+		}
+	]
+}

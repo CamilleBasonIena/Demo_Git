@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Comp_Budget_Reel",
+	"Alias":"Caption",
+	"Expression":"{[A_Version].[A_Version].[Version 1],TM1SubsetToSet([A_Version].[A_Version] , \"Actual\" , \"public\")}"
+}

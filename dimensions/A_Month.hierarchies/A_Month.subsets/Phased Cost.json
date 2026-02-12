@@ -1,0 +1,26 @@
+{
+	"@type":"Subset",
+	"Name":"Phased Cost",
+	"Alias":"Caption",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('A_Month')/Hierarchies('A_Month')/Elements('BaseLine')"
+		},
+		{
+			"@id":"Dimensions('A_Month')/Hierarchies('A_Month')/Elements('Adjustment')"
+		},
+		{
+			"@id":"Dimensions('A_Month')/Hierarchies('A_Month')/Elements('%25 Change')"
+		},
+		{
+			"@id":"Dimensions('A_Month')/Hierarchies('A_Month')/Elements('Full Year Cost')"
+		},
+		{
+			"@id":"Dimensions('A_Month')/Hierarchies('A_Month')/Elements('Description')"
+		},
+		{
+			"@id":"Dimensions('A_Month')/Hierarchies('A_Month')/Elements('DriverOrProfile')"
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"IC Account",
+	"Alias":"Caption",
+	"Expression":"{{FILTER(TM1SubsetAll([A_Account].[A_Account]), (LEFT( [A_Account].[A_Account].CURRENTMEMBER.PROPERTIES(\"IC\") , 2) = \"IC\"))}}"
+}

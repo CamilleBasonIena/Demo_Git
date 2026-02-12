@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Forecast",
+	"Alias":"Caption",
+	"Expression":"{{DISTINCT({DESCENDANTS([A_Month].[A_Month].[Forecast])})}}"
+}

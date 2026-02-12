@@ -1,0 +1,13 @@
+{
+	"@type":"Dimension",
+	"Name":"A_Organization",
+	"Hierarchies@Code.links":
+	[
+		"A_Organization.hierarchies/A_Organization.json",
+		"A_Organization.hierarchies/Geographie.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('A_Organization')/Hierarchies('A_Organization')"
+	}
+}

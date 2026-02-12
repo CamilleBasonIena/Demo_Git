@@ -1,0 +1,11 @@
+{
+	"@type":"Subset",
+	"Name":"Actual",
+	"Alias":"Caption",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('A_Version')/Hierarchies('A_Version')/Elements('Actual')"
+		}
+	]
+}

@@ -1,0 +1,615 @@
+#region Prolog
+#-----------------------------------------------------------------------------------------------------------------------------------------------------#
+# DESCRIPTION DU PROCESSUS 
+#
+# Date :  17/02/2025 
+# Auteur:  Sara Kouzayha
+#
+# Action : This process is for exporting "Masterdata Employee" file From Cube Budget Information Employee
+#
+#---------------------------------------------------------------------------------------------------------------------------------------------------#
+
+
+#====================================#
+#             Define Constants       #
+#====================================#
+#---- Global Variables ----#
+c_Process=getProcessName;
+c_TimeStamp = TimSt( Now, '\Y\m\d\h\i\s' );
+
+n_Errors = 0;
+s_Message = '';
+n_DataCount = 0;
+nHeaders = 1;
+
+c_subsetPrefix = TimSt( Now, '\h\i\s_' ) | NumberToString( INT( RAND() * 10000000));
+
+c_Date = TimSt( Now, '\d-\m-\Y \h:\i:\s' );
+
+#---- Cubes ----#
+
+c_cub_Source =  'Budget Information Employee';
+c_cubAttrBudgetEmployee='}ElementAttributes_Budget Employee';
+c_cubAttrGroupStructure = '}ElementAttributes_Group Structure';
+c_cubBudgetEntityInit =  'Budget Entity Initialization';
+c_cubPeriod= '}ElementAttributes_Period';
+c_cubBudgetYear= '}ElementAttributes_Budget Year';
+
+#----- DImensions-----#
+D_dim_Budget_Year =  'BudgetYear';
+D_dim_Phase = 'Phase';
+D_dim_Version = 'Version';
+D_dim_Period = 'Period';
+D_dim_GroupStructure = 'Group Structure';
+D_dim_Currency = 'Local Currencies';
+D_dim_Budget_Employee = 'Budget Employee';
+D_dim_Budget_Employee_Information_Measures = 'Budget Employee Information Measures';
+
+#----- Subset -----#
+
+c_SourceSubset = 'z_Source' | c_Process | '_' | c_subsetPrefix ;
+c_SourceViewY = 'z_Source' | c_Process | '_' | c_subsetPrefix ;
+
+
+#====================================#
+#             Control Parameter      #
+#====================================#
+SetInputCharacterSet ('TM1CS_UTF8');
+
+n_ErrorsProlog = 0;
+
+### Budget Year 
+IF(DIMIX(D_dim_Budget_Year, P_Budget_Year) = 0 % ELLEV(D_dim_Budget_Year,P_Budget_Year)<>0);
+    n_ErrorsProlog = 1;
+    s_MessageProlog = 'Invalid Year Parameter : doesn''t exist in Budget Year Dimension';
+    DataSourceType='NULL';
+    itemreject(s_MessageProlog);
+ENDIF;
+
+### Period
+IF(DIMIX(D_dim_Period , P_Period) = 0  &  P_Period @<> 'All');       
+    n_ErrorsProlog = 1;
+    s_MessageProlog = 'Invalid Period Parameter : doesn''t exist in Period Dimension';
+    DataSourceType='NULL';
+    itemreject(s_MessageProlog);
+ENDIF;
+
+
+### Entity
+IF(DIMIX(D_dim_GroupStructure , P_Entity) = 0  & p_Entity @<> 'All' );       
+    n_ErrorsProlog = 1;
+    s_MessageProlog = 'Invalid Entity Parameter : doesn''t exist in Group Structure Dimension';
+    DataSourceType='NULL';
+    itemreject(s_MessageProlog);
+ENDIF;
+
+## Phase
+If( DIMIX(D_dim_Phase, P_Phase) = 0 % ELLEV(D_dim_Phase,P_Phase)<>0 );
+  n_ErrorsProlog = 1;
+  s_MessageProlog = 'Invalid Version specified : doesn''t exist in Version Dimension';
+  DataSourceType = 'NULL';
+  ItemReject(  s_MessageProlog );
+EndIf;
+
+
+## Version
+If( DIMIX(D_dim_Version, P_Version) = 0 % ELLEV(D_dim_Version,P_Version)<>0 );
+  n_ErrorsProlog = 1;
+  s_MessageProlog = 'Invalid Version specified : doesn''t exist in Version Dimension';
+  DataSourceType = 'NULL';
+  ItemReject(  s_MessageProlog );
+EndIf;
+
+viewCreate(c_cub_Source, c_SourceViewY,1);
+
+#=========================================#
+#       Creation of the source view       #
+#=========================================#
+#--------------------------#
+# Budget year subset   #
+#-------------------------#
+
+subsetCreate(D_dim_Budget_Year, c_SourceSubset,1);
+subsetElementInsert(D_dim_Budget_Year, c_SourceSubset, P_Budget_Year, 1);
+viewSubsetAssign(c_cub_Source, c_SourceViewY, D_dim_Budget_Year, c_SourceSubset);
+
+#--------------------------#
+# Phase subset   #
+#-------------------------#
+
+subsetCreate(D_dim_Phase, c_SourceSubset, 1);
+subsetElementInsert(D_dim_Phase, c_SourceSubset, P_Phase, 1);
+viewSubsetAssign(c_cub_source, c_SourceViewY, D_dim_Phase, c_SourceSubset);
+
+
+#--------------------------#
+# Version subset   #
+#-------------------------#
+
+subsetCreate(D_dim_Version, c_SourceSubset, 1);
+subsetElementInsert(D_dim_Version, c_SourceSubset, P_Version, 1);
+viewSubsetAssign(c_cub_Source, c_SourceViewY, D_dim_Version, c_SourceSubset);
+
+#--------------------------#
+# Period subset   #
+#-------------------------#
+
+If (P_Period @= 'All');
+    P_Period = 'Total Period'; 
+    subsetCreate(D_dim_Period, c_SourceSubset,1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Jan Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Feb Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Mar Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Apr Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'May Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Jun Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Jul Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Aug Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Sep Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Oct Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Nov Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Dec Y', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Jan Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Feb Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Mar Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Apr Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'May Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Jun Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Jul Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Aug Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Sep Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Oct Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Nov Y+1', 1);
+    subsetElementInsert(D_dim_Period, c_SourceSubset, 'Dec Y+1', 1);	
+    viewSubsetAssign(c_cub_Source, c_SourceViewY, D_dim_Period, c_SourceSubset);
+else;
+    subsetCreate(D_dim_Period , c_SourceSubset,1);
+    subsetElementInsert(D_dim_Period , c_SourceSubset, P_Period , 1);
+    viewSubsetAssign(c_cub_Source, c_SourceViewY,D_dim_Period , c_SourceSubset);
+EndIf;
+
+
+#--------------------------#
+# Group Structure  subset #
+#-------------------------#
+If (P_Entity @= 'All');
+    P_Entity = 'Total Entity';
+EndIf;
+s_MDXRequest = '{TM1FILTERBYLEVEL(DESCENDANTS({[ Group Structure ].['| P_Entity |']}) , 0)}';
+SubsetCreateByMDX(c_SourceSubset,s_MDXRequest, 1);
+SubsetElementInsert(D_dim_GroupStructure, c_SourceSubset, DIMNM(D_dim_GroupStructure, 1), 1);
+SubsetElementDelete(D_dim_GroupStructure, c_SourceSubset , 1 );
+viewSubsetAssign(c_cub_Source, c_SourceViewY, D_dim_GroupStructure, c_SourceSubset);
+
+
+#--------------------------#
+# # Currency :   
+#-------------------------#
+subsetCreate(D_dim_Currency , c_SourceSubset,1);
+subsetElementInsert(D_dim_Currency , c_SourceSubset, 'Local Currency' , 1);
+viewSubsetAssign(c_cub_Source, c_SourceViewY,D_dim_Currency, c_SourceSubset);	
+
+
+#--------------------------#
+# Budget Employee  subset # 
+#-------------------------#
+
+s_MDXRequest = '{TM1FILTERBYLEVEL(DESCENDANTS({[Budget Employee].[Total Before Adjustment]}) , 0)}';
+SubsetCreateByMDX(c_SourceSubset,s_MDXRequest, 1);
+SubsetElementInsert(D_dim_Budget_Employee, c_SourceSubset, DIMNM(D_dim_Budget_Employee, 1), 1);
+SubsetElementDelete(D_dim_Budget_Employee, c_SourceSubset , 1 );
+viewSubsetAssign(c_cub_Source, c_SourceViewY, D_dim_Budget_Employee, c_SourceSubset);
+
+
+
+#--------------------------#
+# Budget Employee Information MEASURES   #
+#--------------------------#
+subsetCreate(D_dim_Budget_Employee_Information_Measures , c_SourceSubset,1);
+subsetElementInsert(D_dim_Budget_Employee_Information_Measures , c_SourceSubset, 'Headcount Measures' , 1);
+subsetElementInsert(D_dim_Budget_Employee_Information_Measures , c_SourceSubset, 'FTE' , 1);
+viewSubsetAssign(c_cub_Source, c_SourceViewY,D_dim_Budget_Employee_Information_Measures, c_SourceSubset);	
+
+
+#========================================#
+#   reset of the Source views             #
+#========================================#
+
+ViewExtractSkipCalcsSet (C_cub_Source, c_SourceViewY, 0);
+ViewExtractSkipRuleValuesSet (C_cub_Source, c_SourceViewY, 0);
+ViewExtractSkipZeroesSet (C_cub_Source, c_SourceViewY, 1);
+
+DatasourceCubeView=c_SourceViewY ;
+
+
+#------------------------------------------------------------------------------------------------------
+
+If (P_Period @= 'Total Period' & P_Entity @= 'Total Entity' );
+    sFileName = 'Employee_Masterdata'|'_'| P_Budget_Year|'_' | p_Phase|'_'| p_Version|'.csv';
+ELSEIF (P_Period @= 'Total Period' & P_Entity @<> 'Total Entity' );
+    sFileName = 'Employee_Masterdata'|'_'| P_Budget_Year|'_' | p_Entity|'_'| p_Phase|'_'| p_Version|'.csv';
+ELSEIF (P_Entity @= 'Total Entity' & P_Period @<> 'Total Period' );
+    sFileName = 'Employee_Masterdata'|'_'| P_Budget_Year|'_' | P_Period|'_'| p_Phase|'_'| p_Version|'.csv';  
+ELSEIF (P_Entity @<> 'Total Entity' & P_Period @<> 'Total Period' );
+    sFileName = 'Employee_Masterdata'|'_'| P_Budget_Year|'_' | P_Period|'_'| p_Entity|'_'| p_Phase|'_'| p_Version|'.csv'; 
+ENDIF;
+
+
+
+IF(Subst(pFilePath, LONG(pFilepath), 1) @<> '\');
+    pFilePath = pFilePath | '\';
+ENDIF;
+
+#Set output options:
+DatasourceASCIIDelimiter=';';
+DatasourceASCIIQuoteCharacter= '';
+DatasourceASCIIThousandSeparator='';
+
+
+#First Record - set once here so that title record can be added to the output
+bFirstRec = 'TRUE';
+
+vKeyConcat = '';
+vKeyConcatPrec = '';
+#endregion
+#region Data
+Last_Month_Actual = CellGetS( c_cubBudgetEntityInit, P_Budget_Year, v_Phase, v_GS, 'Last Month of Actual' );
+MonthIndex = CellGetN( c_cubPeriod, Last_Month_Actual, 'Month Index' );
+Previous_BudgetYear = CellGetS(c_cubBudgetYear,P_Budget_Year,'Previous Year');
+
+IF(v_BudgetInformationEmployeeMeasure @= 'FTE');
+    Value_HM =   CellGetN( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Headcount Measures' );
+    IF (Value_HM <> 0);
+        ItemSkip;
+    ELSE; 
+        #Retrieve data
+        Value_Payroll_Entity = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Payroll Entity' );
+        Value_Local_Employee_Number = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Local Employee Number' );
+        Value_Last_Name = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Last Name' );
+        Value_First_Name = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'First Name' );
+        Value_Original_Hire_Date = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Original Hire Date' );
+        Value_Adjusted_Hire_Date = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Adjusted Hire Date' );
+        Value_Start_Date = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Start Date' );
+        Value_Starting_Month = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Starting Month' );
+        Value_Reason_for_Hiring = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Reason for Hiring' );
+        Value_Termination_Date = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Termination Date' );
+        Value_Leaving_Month = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Leaving Month' );
+        Value_Reason_for_Leaving = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Reason for Leaving' );
+        Value_FTE = CellGetN( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'FTE' );
+        Value_Annual_Base_Salary = CellGetN( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Annual Base Salary' );
+        Value_Annual_Base_Salary_100P = CellGetN( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Annual Base Salary 100%' );
+        Value_Banding = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Banding' );
+        Value_Job_Title = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Job Title' );
+        Value_Selling_Non_Selling = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Selling/Non Selling' );
+        Value_Employment_type = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Employment type' );
+        Value_Employee_level = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Employee level' );
+        Value_Work_Location = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Work Location' );
+        Value_Supervisor_Payroll_Entity = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Supervisor Payroll Entity' );
+        Value_Supervisor_First_Name = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Supervisor First Name' );
+        Value_Supervisor_Last_Name = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Supervisor Last Name' );
+        Value_Budget_Local_Cost_Center_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Budget Local Cost Center Code' );
+        Value_Payroll_Local_Cost_Center_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Payroll Local Cost Center Code' );
+        Value_Category_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Category Code' );
+        Value_Store_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Store Code' );
+        Value_Organizational_Micro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Organizational Micro Function Code' );
+        Value_Organizational_Macro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Organizational Macro Function Code' );
+        Value_Budget_Financial_Macro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Budget Financial Macro Function Code' );
+        Value_Budget_Financial_Micro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Budget Financial Micro Function Code' );
+        Value_Payroll_Financial_Micro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Payroll Financial Micro Function Code' );
+        Value_Payroll_Financial_Macro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Payroll Financial Macro Function Code' );
+        Value_Date_of_Birth = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Date of Birth' );
+        Value_Supervisor_Global_Employee_ID = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Supervisor Global Employee ID' );
+        Value_Supervisory_Organization_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Supervisory Organization Code' );
+        Value_Position_Description = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Position Description' );
+        Value_Job_Profile_Description = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Job Profile Description' );
+        Value_Job_Profile_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Job Profile Code' );
+        Value_Position_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Position Code' );
+        Value_Work_Location_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Work Location Code' );
+        Value_Workday_ID = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Workday_ID' ); 
+    ENDIF; 
+ENDIF;
+
+#Retrieve data
+Value_Payroll_Entity = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Payroll Entity' );
+Value_Local_Employee_Number = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Local Employee Number' );
+Value_Last_Name = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Last Name' );
+Value_First_Name = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'First Name' );
+Value_Original_Hire_Date = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Original Hire Date' );
+Value_Adjusted_Hire_Date = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Adjusted Hire Date' );
+Value_Start_Date = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Start Date' );
+Value_Starting_Month = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Starting Month' );
+Value_Reason_for_Hiring = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Reason for Hiring' );
+Value_Termination_Date = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Termination Date' );
+Value_Leaving_Month = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Leaving Month' );
+Value_Reason_for_Leaving = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Reason for Leaving' );
+Value_FTE = CellGetN( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'FTE' );
+Value_Annual_Base_Salary = CellGetN( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Annual Base Salary' );
+Value_Annual_Base_Salary_100P = CellGetN( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Annual Base Salary 100%' );
+Value_Banding = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Banding' );
+Value_Job_Title = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Job Title' );
+Value_Selling_Non_Selling = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Selling/Non Selling' );
+Value_Employment_type = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Employment type' );
+Value_Employee_level = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Employee level' );
+Value_Work_Location = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Work Location' );
+Value_Supervisor_Payroll_Entity = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Supervisor Payroll Entity' );
+Value_Supervisor_First_Name = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Supervisor First Name' );
+Value_Supervisor_Last_Name = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Supervisor Last Name' );
+Value_Budget_Local_Cost_Center_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Budget Local Cost Center Code' );
+Value_Payroll_Local_Cost_Center_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Payroll Local Cost Center Code' );
+Value_Category_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Category Code' );
+Value_Store_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Store Code' );
+Value_Organizational_Micro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Organizational Micro Function Code' );
+Value_Organizational_Macro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Organizational Macro Function Code' );
+Value_Budget_Financial_Macro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Budget Financial Macro Function Code' );
+Value_Budget_Financial_Micro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Budget Financial Micro Function Code' );
+Value_Payroll_Financial_Micro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Payroll Financial Micro Function Code' );
+Value_Payroll_Financial_Macro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Payroll Financial Macro Function Code' );
+Value_Date_of_Birth = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Date of Birth' );
+Value_Supervisor_Global_Employee_ID = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Supervisor Global Employee ID' );
+Value_Supervisory_Organization_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Supervisory Organization Code' );
+Value_Position_Description = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Position Description' );
+Value_Job_Profile_Description = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Job Profile Description' );
+Value_Job_Profile_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Job Profile Code' );
+Value_Position_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Position Code' );
+Value_Work_Location_Code = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Work Location Code' );
+Value_Workday_ID = CellGetS( c_cub_Source, P_Budget_Year, v_Phase, v_Version, v_Period, v_GS,v_LC, v_Budget_Employee,'Workday_ID' );
+
+
+
+
+Value_Original_Hire_Date = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Original Hire Date' );
+Value_Adjusted_Hire_Date = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Adjusted Hire Date' );
+Value_Start_Date = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Start Date' );
+Value_Termination_Date = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Termination Date' );
+Value_Employment_type = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Employment type' );
+Value_Employee_level = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Employee level' );
+Value_Work_Location = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Work Location' );
+Value_Supervisor_Payroll_Entity = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor Payroll Entity' );
+Value_Supervisor_First_Name = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor First Name' );
+Value_Supervisor_Last_Name = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor Last Name' );
+Value_Organizational_Micro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Organizational Micro Function Code' );
+Value_Organizational_Macro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Organizational Macro Function Code' );
+Value_Payroll_Financial_Micro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Payroll Financial Micro Function Code' );
+Value_Payroll_Financial_Macro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Payroll Financial Macro Function Code' );
+Value_Date_of_Birth = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Date of Birth' );
+Value_Supervisor_Global_Employee_ID = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor Global Employee ID' );
+Value_Position_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Position Code' );
+Value_Work_Location_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Work Location Code' );
+Value_Workday_ID = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Workday_ID' );
+
+IF(Value_Local_Employee_Number @= '');
+    IF (MonthIndex <> 12);
+        Value_Local_Employee_Number = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Local Employee Number' );
+    ELSE;
+        Value_Local_Employee_Number = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Local Employee Number' );
+    ENDIF;
+ENDIF;
+IF(Value_Last_Name @= '');
+    IF (MonthIndex <> 12);
+        Value_Last_Name = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Last Name' );
+    ELSE;
+        Value_Last_Name = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Last Name' );
+    ENDIF;
+ENDIF;
+IF(Value_First_Name @= '');
+    IF (MonthIndex <> 12);
+        Value_First_Name = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'First Name' );
+    ELSE;
+         Value_First_Name = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'First Name' );
+    ENDIF;
+ENDIF;
+IF(Value_Original_Hire_Date @= '');
+    IF (MonthIndex <> 12);
+        Value_Original_Hire_Date = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Original Hire Date' );
+    ELSE;
+        Value_Original_Hire_Date = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Original Hire Date' );
+    ENDIF;
+ENDIF;
+IF(Value_Adjusted_Hire_Date @= '');
+    IF (MonthIndex <> 12);
+        Value_Adjusted_Hire_Date = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Adjusted Hire Date' );
+    ELSE;
+        Value_Adjusted_Hire_Date = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Adjusted Hire Date' );
+    ENDIF;
+ENDIF;
+IF(Value_Start_Date @= '');
+    IF (MonthIndex <> 12);
+        Value_Start_Date = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Start Date' );
+    ELSE;
+        Value_Start_Date = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Start Date' );
+    ENDIF;
+ENDIF;
+IF(Value_Termination_Date @= '');
+    IF (MonthIndex <> 12);
+        Value_Termination_Date = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Termination Date' );
+    ELSE;
+        Value_Termination_Date = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Termination Date' );
+    ENDIF;
+ENDIF;
+IF(Value_Employment_type @= '');
+    IF (MonthIndex <> 12);
+        Value_Employment_type = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Employment type' );
+    ELSE;
+        Value_Employment_type = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Employment type' );
+    ENDIF;
+ENDIF;
+IF(Value_Employee_level @= '');
+    IF (MonthIndex <> 12);
+        Value_Employee_level = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Employee level' );
+    ELSE;
+        Value_Employee_level = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Employee level' );
+    ENDIF;
+ENDIF;
+IF(Value_Work_Location @= '');
+    IF (MonthIndex <> 12);
+        Value_Work_Location = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Work Location' );
+    ELSE;
+        Value_Work_Location = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Work Location' );
+    ENDIF;
+ENDIF;
+IF(Value_Supervisor_Payroll_Entity @= '');
+    IF (MonthIndex <> 12);
+        Value_Supervisor_Payroll_Entity = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor Payroll Entity' );
+    ELSE;
+        Value_Supervisor_Payroll_Entity = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor Payroll Entity' );
+    ENDIF;
+ENDIF;
+IF(Value_Supervisor_First_Name @= '');
+    IF (MonthIndex <> 12);
+        Value_Supervisor_First_Name = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor First Name' );
+    ELSE;
+        Value_Supervisor_First_Name = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor First Name' );
+    ENDIF;
+ENDIF;
+IF(Value_Supervisor_Last_Name @= '');
+    IF (MonthIndex <> 12);
+       Value_Supervisor_Last_Name = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor Last Name' );
+    ELSE;
+        Value_Supervisor_Last_Name = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor Last Name' );
+    ENDIF;
+ENDIF;
+IF(Value_Organizational_Micro_Function_Code @= '');
+    IF (MonthIndex <> 12);
+       Value_Organizational_Micro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Organizational Micro Function Code' );
+    ELSE;
+        Value_Organizational_Micro_Function_Code = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Organizational Micro Function Code' );
+    ENDIF;
+ENDIF;
+IF(Value_Organizational_Macro_Function_Code @= '');
+    IF (MonthIndex <> 12);
+        Value_Organizational_Macro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Organizational Macro Function Code' );
+    ELSE;
+        Value_Organizational_Macro_Function_Code = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Organizational Macro Function Code' );
+    ENDIF;
+ENDIF;
+IF(Value_Payroll_Financial_Micro_Function_Code @= '');
+    IF (MonthIndex <> 12);
+        Value_Payroll_Financial_Micro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Payroll Financial Micro Function Code' );
+    ELSE;
+         Value_Payroll_Financial_Micro_Function_Code = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Payroll Financial Micro Function Code' );
+    ENDIF;
+ENDIF;
+IF(Value_Payroll_Financial_Macro_Function_Code @= '');
+    IF (MonthIndex <> 12);
+        Value_Payroll_Financial_Macro_Function_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Payroll Financial Macro Function Code' );
+    ELSE;
+         Value_Payroll_Financial_Macro_Function_Code = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Payroll Financial Macro Function Code' );
+    ENDIF;
+ENDIF;
+IF(Value_Date_of_Birth @= '');
+    IF (MonthIndex <> 12);
+        Value_Date_of_Birth = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Date of Birth' );
+    ELSE;
+        Value_Date_of_Birth = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Date of Birth' );
+    ENDIF;
+ENDIF;
+IF(Value_Supervisor_Global_Employee_ID @= '');
+    IF (MonthIndex <> 12);
+        Value_Supervisor_Global_Employee_ID = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor Global Employee ID' );
+    ELSE;
+         Value_Supervisor_Global_Employee_ID = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Supervisor Global Employee ID' );
+    ENDIF;
+ENDIF;
+IF(Value_Position_Code @= '');
+    IF (MonthIndex <> 12);
+        Value_Position_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Position Code' );
+    ELSE;
+        Value_Position_Code = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Position Code' );
+    ENDIF;
+ENDIF;
+IF(Value_Work_Location_Code @= '');
+    IF (MonthIndex <> 12);
+        Value_Work_Location_Code = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Work Location Code' );
+    ELSE;
+        Value_Work_Location_Code = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Work Location Code' );
+    ENDIF;
+ENDIF;
+IF(Value_Workday_ID @= '');
+    IF (MonthIndex <> 12);
+        Value_Workday_ID = CellGetS( c_cub_Source, P_Budget_Year, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Workday_ID' );
+    ELSE;
+        Value_Workday_ID = CellGetS( c_cub_Source, Previous_BudgetYear, 'Actual', v_Version, Last_Month_Actual, v_GS,v_LC, v_Budget_Employee,'Workday_ID' );
+    ENDIF;
+ENDIF;
+
+
+
+#-------------MAPPING Workday ID------------# 
+V_WorkdayID=CellGetS(c_cubAttrBudgetEmployee , v_Budget_Employee , 'Workday ID' );
+If (V_WorkdayID @= '');
+        V_WorkdayID=v_Budget_Employee;
+ENDIF;
+
+#-------------MAPPING Employee ID------------# 
+V_EmployeeID=CellGetS(c_cubAttrBudgetEmployee , v_Budget_Employee , 'Employee ID' );
+If (V_EmployeeID @= '');
+        V_EmployeeID=v_Budget_Employee;
+ENDIF;
+
+
+#------------Mapping Payroll Entity Code ----------------#
+If (Value_Payroll_Entity @<> '');
+    V_Payroll_Code = CellGetS( c_cubAttrGroupStructure , Value_Payroll_Entity,'Code' );
+    If (V_Payroll_Code @= '');
+            V_Payroll_Code=Value_Payroll_Entity;
+    ENDIF;
+ENDIF;
+
+#------------Mapping Payroll Entity HFM Code ----------------#
+If (Value_Payroll_Entity @<> '');
+    V_Payroll_HFM_Code = CellGetS( c_cubAttrGroupStructure , Value_Payroll_Entity,'HFM Code' );
+    If (V_Payroll_HFM_Code @= '');
+            V_Payroll_HFM_Code=Value_Payroll_Entity;
+    ENDIF;
+ENDIF;
+#------------Mapping Payroll Entity HFM Hierachy ----------------#
+If (Value_Payroll_Entity @<> '');
+    V_Payroll_HFM_Hierarchy = CellGetS( c_cubAttrGroupStructure , Value_Payroll_Entity,'HFM Hierarchy' );
+    If (V_Payroll_HFM_Hierarchy @= '');
+            V_Payroll_HFM_Hierarchy=Value_Payroll_Entity;
+    ENDIF;
+ENDIF;
+
+#------------Mapping Budget Entity HFM Code ----------------#
+V_Budget_HFM_Code = CellGetS( c_cubAttrGroupStructure , V_GS,'HFM Code' );
+If (V_Budget_HFM_Code @= '');
+        V_Budget_HFM_Code=V_GS;
+ENDIF;
+
+#------------Mapping Budget Entity HFM Hierachy ----------------#
+V_Budget_HFM_Hierarchy = CellGetS( c_cubAttrGroupStructure , V_GS,'HFM Hierarchy' );
+If (V_Budget_HFM_Hierarchy @= '');
+        V_Budget_HFM_Hierarchy=V_GS;
+ENDIF;
+
+#------------------------------------TEXT OUTPUT---------------------------------------------------#
+
+SetOutputCharacterSet( pFilepath | sFileName, 'TM1CS_UTF8' );
+
+
+V1=NumberToStringEx(Value_FTE, '0.################', '.', '');
+V2=NumberToStringEx(Value_Annual_Base_Salary, '0.################', '.', '');
+V3=NumberToStringEx(Value_Annual_Base_Salary_100P, '0.################', '.', '');
+
+
+
+
+IF( nHeaders = 1);
+    TextOutput(pFilepath | sFileName, 'Phase', 'Budget Year', 'Period', 'HRA Code', 'Workday ID', 'Employee ID', 'Payroll Entity code', 'Payroll MRP code', 'Payroll MRP hierarchy', 'Budget Entity code'
+, 'Budget MRP code', 'Budget MRP hierarchy', 'Local Employee Number', 'Surname', 'First Name', 'Original Hire Date', 'Adjusted Hire Date', 'Start Date', 'Starting Month', 'Reason for Hiring'
+, 'Termination Date', 'Leaving Month', 'Reason for Leaving', 'Contractual FTE', 'Annual Base Salary', 'Annual Base Salary 100%', 'Compensation Grade', 'Business Title', 'Selling/Non Selling', 'Employment type'
+, 'Employee level', 'Work Location', 'Supervisor Payroll Entity', 'Supervisor First Name', 'Supervisor Surname', 'Budget Local Cost Center Code', 'Payroll Local Cost Center Code', 'Category Code', 'Store Code', 'Organizational Micro Function Code'
+, 'Organizational Macro Function Code', 'Budget Financial Macro Function Code', 'Budget Financial Micro Function Code', 'Payroll Financial Micro Function Code', 'Payroll Financial Macro Function Code', 'Date of Birth', 'Supervisor Global Employee ID', 'Supervisory Organization Code', 'Position Description', 'Job Profile Description'
+, 'Job Profile Code', 'Position Code', 'Work Location Code', 'Workday_ID' ); 
+    nHeaders = 0;
+ENDIF;
+
+
+TextOutput( pFilepath | sFileName, v_Phase,v_Budget_Year, v_Period, v_Budget_Employee,V_WorkdayID, V_EmployeeID, V_Payroll_Code, V_Payroll_HFM_Code, V_Payroll_HFM_Hierarchy, v_GS,
+            V_Budget_HFM_Code,V_Budget_HFM_Hierarchy,Value_Local_Employee_Number,Value_Last_Name,Value_First_Name,Value_Original_Hire_Date,Value_Adjusted_Hire_Date,Value_Start_Date,Value_Starting_Month,Value_Reason_for_Hiring,Value_Termination_Date,
+            Value_Leaving_Month,Value_Reason_for_Leaving,V1,V2,V3,Value_Banding,Value_Job_Title,Value_Selling_Non_Selling,Value_Employment_type,Value_Employee_level,
+            Value_Work_Location,Value_Supervisor_Payroll_Entity,Value_Supervisor_First_Name,Value_Supervisor_Last_Name,Value_Budget_Local_Cost_Center_Code,Value_Payroll_Local_Cost_Center_Code,Value_Category_Code,Value_Store_Code,Value_Organizational_Micro_Function_Code,
+            Value_Organizational_Macro_Function_Code,Value_Budget_Financial_Macro_Function_Code,Value_Budget_Financial_Micro_Function_Code,Value_Payroll_Financial_Micro_Function_Code,Value_Payroll_Financial_Macro_Function_Code,Value_Date_of_Birth,Value_Supervisor_Global_Employee_ID ,Value_Supervisory_Organization_Code,Value_Position_Description,Value_Job_Profile_Description,
+            Value_Job_Profile_Code,Value_Position_Code,Value_Work_Location_Code,Value_Workday_ID);
+
+#endregion

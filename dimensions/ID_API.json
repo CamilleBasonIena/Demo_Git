@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"ID_API",
+	"Hierarchies@Code.links":
+	[
+		"ID_API.hierarchies/ID_API.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('ID_API')/Hierarchies('ID_API')"
+	}
+}

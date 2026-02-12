@@ -1,0 +1,64 @@
+#region Prolog
+###############################
+### Works Only for LEAF levels  ###
+###############################
+
+vNow     = TIMST (NOW(), '\Y\m\d\h\i\s' );
+# User infos
+vUser = 'apikey';
+vAPIKey = 'azE6dXNyXzcwNzk3OTVmLTAwMzMtMzM0OS1hZjEzLTVjOTg4NzliYmQ0NTpFQXB4SlpNL01tRG00YVFJN3dLaGxVWFArWm1rMEo2dGVhSE1sNTNwU3RnPTpQSjE0' ;
+vCredentials = vUser | ':' | vAPIKey;
+# Env infos
+vHost ='https://eu-central-1.planninganalytics.saas.ibm.com';
+vTenant = 'DDZZBR27IKOU' ;
+vDBS = 'Region03';
+vDBT = 'Test_Git' ;
+ 
+################## retreive source datas ################## 
+# Test POST 
+sTokenUrlS = vHost| '/api/'| vTenant | '/v0/tm1/' | vDBS | '/api/v1/Cubes('|CHAR(39)|'A_Balance Sheet'|CHAR(39)|')/Views('|CHAR(39)|'01'|CHAR(39)|')/tm1.Execute?$expand=Cells($select=Ordinal,Value)' ;
+# sTokenUrlS = vHost| '/api/'| vTenant | '/v0/tm1/' | vDBT | '/api/v1/Cubes('|CHAR(39)|'plan_BudgetPlan'|CHAR(39)|')/Views('|CHAR(39)|'01 - Small'|CHAR(39)|')/tm1.Execute?$expand=Cells($select=Ordinal,Value)' ;
+# sTokenUrlS = vHost| '/api/'| vTenant | '/v0/tm1/' | vDBS | '/api/v1/Cubes('|CHAR(39)|'A_Balance Sheet'|CHAR(39)|')/Views('|CHAR(39)|'01'|CHAR(39)|')/tm1.Execute?$expand=Axes($expand=Hierarchies($select=Name),Tuples($expand=Members($select=Name))),Cells';
+ExecuteHttpRequest( 'POST', sTokenUrlS , '-u '| vCredentials , '-h Content-Type:application/json; charset=utf-8' );
+
+nResponseCodeS = HttpResponseGetStatusCode();
+# # sResponseHeader = HttpResponseGetHeader('Content-Type' );
+sResponseBodyS  = HttpResponseGetBody();
+# nResponseBodyShort = LONG(sResponseBodyS) /8 ;
+sResponseBodyShort = SUBST( sResponseBodyS, 1, 64999 );
+
+# ASCIIOutput('/Output/body_POST.json', NumberToString( LONG(sResponseBodyS) ), sResponseBodyS );
+ASCIIOutput('/Output/body_POST.json', sResponseBodyShort );
+
+# ASCIIOutput('/Output/body_POST.json', 'test' );
+# # Get the Axes and cells datas
+nGetDatas = SCAN( '"Cells":', sResponseBodyS );
+sGetDatas = SUBST( sResponseBodyS , nGetDatas +8 , LONG(sResponseBodyS) - nGetDatas -8 );
+ # ASCIIOutput('/Output/body_POST.json', NumberToString( LONG(sResponseBodyS) ), sGetDatas );
+# ASCIIOutput('/Output/body_POST.json', NumberToString( nResponseCodeS ), sGetDatas );
+######################
+# Get the target CellsetID
+sTokenUrlCellsetID = vHost| '/api/'| vTenant | '/v0/tm1/' | vDBT | '/api/v1/Cubes('|CHAR(39)|'A_Balance Sheet'|CHAR(39)|')/Views('|CHAR(39)|'01'|CHAR(39)|')/tm1.Execute' ;
+# sTokenUrlCellsetID = vHost| '/api/'| vTenant | '/v0/tm1/' | vDBT | '/api/v1/Cubes('|CHAR(39)|'plan_BudgetPlan'|CHAR(39)|')/Views('|CHAR(39)|'01 - Small'|CHAR(39)|')/tm1.Execute';
+ExecuteHttpRequest( 'POST', sTokenUrlCellsetID , '-u '| vCredentials , '-h Content-Type:application/json' );
+# Parse body to get the cellsetID
+sResponseBodyCellsetID = HttpResponseGetBody();
+nResponseCodeCellsetID = HttpResponseGetStatusCode();
+nGetCellsetID = SCAN( '"ID":' , sResponseBodyCellsetID); 
+sGetCellsetID =SUBST( sResponseBodyCellsetID, nGetCellsetID +6 , (LONG(sResponseBodyCellsetID) - nGetCellsetID) -7);
+# ASCIIOutput('/Output/body_POST.json', NumberToString( nGetCellsetID) , NumberToString( nResponseCodeCellsetID) , NumberToString( LONG(sResponseBodyCellsetID) ) , sResponseBodyCellsetID );
+
+# Send data in target using the cellsetID previously retrieved
+sTokenUrlT = vHost| '/api/'| vTenant | '/v0/tm1/' | vDBT | '/api/v1/Cellsets('|CHAR(39)|sGetCellsetID|CHAR(39)|')/Cells';
+# Data format example :
+# sGetDatas = '[{"Ordinal":0,"Value": 4},{"Ordinal":1,"Value":4},{"Ordinal":2,"Value": 4}] ';
+
+# ExecuteHttpRequest( 'POST', sTokenUrlT , '-u '| vCredentials , '-h Content-Type:application/json' , '-d {"Ordinal": 0,"Value": 300000}' );
+ExecuteHttpRequest( 'PATCH', sTokenUrlT ,  '-k' ,  '-u '| vCredentials ,  '-h Content-Type:application/json' , '-d '| sGetDatas );
+nResponseCode = HttpResponseGetStatusCode();
+# sResponseHeader = HttpResponseGetHeader('Content-Type' );
+# sResponseBody  = HttpResponseGetBody();
+ASCIIOutput('/Output/body_POST.json', NumberToString(nResponseCode) );
+
+
+#endregion

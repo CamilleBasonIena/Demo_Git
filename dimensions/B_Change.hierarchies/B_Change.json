@@ -1,0 +1,19 @@
+{
+	"@type":"Hierarchy",
+	"Name":"B_Change",
+	"Elements":
+	[
+		{
+			"Name":"Balance",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Change",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"B_Change.subsets/Default.json"
+	]
+}

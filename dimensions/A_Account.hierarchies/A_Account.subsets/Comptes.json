@@ -1,0 +1,7 @@
+{
+	"@type":"Subset",
+	"Name":"Comptes",
+	"ExpandAbove":true,
+	"Alias":"Caption",
+	"Expression":"{{TM1TOGGLEEXPANDMODE(TM1SubsetToSet([A_Account].[A_Account] , \"P&L Summary\" , \"public\") , EXPAND_ABOVE)}}"
+}

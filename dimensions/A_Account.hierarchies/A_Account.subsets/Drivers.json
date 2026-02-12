@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Drivers",
+	"Alias":"Caption",
+	"Expression":"{FILTER(TM1SUBSETALL([A_Account].[A_Account]) , ([A_Account].[A_Account].CURRENTMEMBER.PROPERTIES(\"Driver\") = \"Yes\"))}"
+}

@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"B_Change",
+	"Hierarchies@Code.links":
+	[
+		"B_Change.hierarchies/B_Change.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('B_Change')/Hierarchies('B_Change')"
+	}
+}

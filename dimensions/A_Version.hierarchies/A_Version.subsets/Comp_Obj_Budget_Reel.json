@@ -1,0 +1,17 @@
+{
+	"@type":"Subset",
+	"Name":"Comp_Obj_Budget_Reel",
+	"Alias":"Caption",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('A_Version')/Hierarchies('A_Version')/Elements('Target')"
+		},
+		{
+			"@id":"Dimensions('A_Version')/Hierarchies('A_Version')/Elements('Version 1')"
+		},
+		{
+			"@id":"Dimensions('A_Version')/Hierarchies('A_Version')/Elements('Actual')"
+		}
+	]
+}

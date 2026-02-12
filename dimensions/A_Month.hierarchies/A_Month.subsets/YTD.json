@@ -1,0 +1,5 @@
+{
+	"@type":"Subset",
+	"Name":"YTD",
+	"Expression":"{{DRILLDOWNMEMBER({[A_Month].[A_Month].[YTD]}, {[A_Month].[A_Month].[YTD]}, RECURSIVE)}}"
+}

@@ -1,0 +1,5 @@
+{
+	"@type":"Subset",
+	"Name":"Country",
+	"Expression":"{{DRILLDOWNMEMBER({[A_Organization].[Geographie].[Total Company]}, {[A_Organization].[Geographie].[Total Company]}, RECURSIVE)}}"
+}

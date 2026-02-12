@@ -1,0 +1,68 @@
+{
+	"@type":"Process",
+	"Name":"Budget Export - Export to SAC tool - All Months Master Data",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"Budget Export - Export to SAC tool - All Months Master Data.ti",
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForServer":"Period:Period",
+		"dataSourceNameForClient":"Period:Period",
+		"subset":"All_YTD_Months"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"p_YorY_1",
+			"Prompt":"Y or Y+1",
+			"Value":"Y",
+			"Type":"String"
+		},
+		{
+			"Name":"p_Process",
+			"Prompt":"Process you want to export for all months:",
+			"Value":"Budget Export - Export to SAC tool - Masterdata",
+			"Type":"String"
+		},
+		{
+			"Name":"P_Budget_Year",
+			"Prompt":"2019 or more :",
+			"Value":"2025",
+			"Type":"String"
+		},
+		{
+			"Name":"p_Entity",
+			"Prompt":"Dim Group Structure or All : ",
+			"Value":"All",
+			"Type":"String"
+		},
+		{
+			"Name":"p_Phase",
+			"Prompt":"Phase :",
+			"Value":"Budget",
+			"Type":"String"
+		},
+		{
+			"Name":"p_Version",
+			"Prompt":"Version :",
+			"Value":"VF",
+			"Type":"String"
+		},
+		{
+			"Name":"pFilePath",
+			"Prompt":"",
+			"Value":"S:\\prod\\HRAnalytics_Share\\Administration\\Export\\HDR\\Cockpit",
+			"Type":"String"
+		}
+	],
+	"Variables":
+	[
+		{
+			"Name":"vPeriod",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

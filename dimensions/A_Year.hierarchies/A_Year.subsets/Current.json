@@ -1,0 +1,11 @@
+{
+	"@type":"Subset",
+	"Name":"Current",
+	"Alias":"Caption",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('A_Year')/Hierarchies('A_Year')/Elements('Y3')"
+		}
+	]
+}

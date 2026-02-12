@@ -1,0 +1,13 @@
+{
+	"@type":"Dimension",
+	"Name":"A_Version",
+	"Hierarchies@Code.links":
+	[
+		"A_Version.hierarchies/A_Version.json",
+		"A_Version.hierarchies/ABB.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('A_Version')/Hierarchies('A_Version')"
+	}
+}

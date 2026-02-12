@@ -1,0 +1,48 @@
+#region Prolog
+
+# User infos
+Cube_User = 'Users_API';
+vUser = TM1User();
+vKey = 'apikey';
+vAPIKey = CellGetS( Cube_User, 'API_Key', vUser ) ;
+#MCSP - Mode de connexion propre à cette plateforme (ajouter d'autres modes de connexion)
+vCredentials = vKey |':'| vAPIKey;
+
+
+# Env infos
+vNow     = TIMST (NOW(), '\Y\m\d\h\i\s' );
+vTenant = CellGetS( Cube_User, 'Tenant_ID', vUser ) ;
+
+################## retreive source datas ################## 
+# POST 
+sTokenUrlS = pHost| '/api/'| vTenant | '/v0/tm1/' | pSource | '/api/v1/Cubes('|CHAR(39)|pCube|CHAR(39)|')/Views('|CHAR(39)|pView|CHAR(39)|')/tm1.Execute?$expand=Cells($select=Ordinal,Value)';
+ExecuteHttpRequest( 'POST', sTokenUrlS , '-u '| vCredentials , '-h Content-Type:application/json; charset=utf-8' );
+nResponseCodeS = HttpResponseGetStatusCode();
+sResponseBodyS  = HttpResponseGetBody();
+
+# # Get the Axes and cells datas
+nGetDatas = SCAN( '"Cells":', sResponseBodyS );
+sGetDatas = SUBST( sResponseBodyS , nGetDatas +8 , LONG(sResponseBodyS) - nGetDatas -8 );
+
+######################
+
+# Get the target CellsetID
+sTokenUrlCellsetID = pHost| '/api/'| vTenant | '/v0/tm1/' | pCible | '/api/v1/Cubes('|CHAR(39)|pCube|CHAR(39)|')/Views('|CHAR(39)|pView|CHAR(39)|')/tm1.Execute';
+ExecuteHttpRequest( 'POST', sTokenUrlCellsetID , '-u '| vCredentials , '-h Content-Type:application/json' );
+
+# Parse body to get the cellsetID
+sResponseBodyCellsetID = HttpResponseGetBody();
+nResponseCodeCellsetID = HttpResponseGetStatusCode();
+nGetCellsetID = SCAN( '"ID":' , sResponseBodyCellsetID); 
+sGetCellsetID =SUBST( sResponseBodyCellsetID, nGetCellsetID +6 , (LONG(sResponseBodyCellsetID) - nGetCellsetID) -7);
+
+# Send data in target using the cellsetID previously retrieved
+sTokenUrlT = pHost| '/api/'| vTenant | '/v0/tm1/' | pCible | '/api/v1/Cellsets('|CHAR(39)|sGetCellsetID|CHAR(39)|')/Cells';
+ExecuteHttpRequest( 'PATCH', sTokenUrlT ,  '-k' ,  '-u '| vCredentials ,  '-h Content-Type:application/json' , '-d '| sGetDatas );
+nResponseCode = HttpResponseGetStatusCode();
+
+ASCIIOutput('/Output/body_POST_CCE.json', NumberToString(nResponseCode), sGetCellsetID, sTokenUrlT);
+
+
+
+#endregion

@@ -1,0 +1,39 @@
+{
+	"@type":"MDXView",
+	"Name":"Default",
+	"MDX@Code.link":"Default.mdx",
+	"Meta": {
+		"Aliases": {
+			"[A_Account].[A_Account]": "Caption",
+			"[A_Month].[A_Month]": "Caption",
+			"[A_Organization].[A_Organization]": "Caption",
+			"[A_Version].[A_Version]": "Caption",
+			"[A_Year].[A_Year]": "Caption"
+		},
+		"ContextSets": {
+			"[A_Organization].[A_Organization]": {
+				"IsPublic": false,
+				"SubsetName": "Default"
+			},
+			"[A_Version].[A_Version]": {
+				"IsPublic": true,
+				"SubsetName": "Default"
+			},
+			"[A_Year].[A_Year]": {
+				"IsPublic": true,
+				"SubsetName": "Default"
+			},
+			"[B_Change].[B_Change]": {
+				"Expression": "{[B_Change].[B_Change].MEMBERS}"
+			}
+		},
+		"ExpandAboves": {
+			"[A_Account].[A_Account]": true,
+			"[A_Month].[A_Month]": false,
+			"[A_Organization].[A_Organization]": false,
+			"[A_Version].[A_Version]": false,
+			"[A_Year].[A_Year]": false,
+			"[B_Change].[B_Change]": false
+		}
+	}
+}

@@ -1,0 +1,1 @@
+SELECT {{TM1FILTERBYLEVEL(TM1SUBSETALL([actvsbud].[actvsbud]) , 0)}}*{{TM1FILTERBYLEVEL(TM1SUBSETALL([month].[month]) , 0)}} ON 0, {{TM1FILTERBYLEVEL(TM1SUBSETALL([model].[model]) , 0)}} ON 1 FROM [PriceCube] WHERE ([region].[region].[France])

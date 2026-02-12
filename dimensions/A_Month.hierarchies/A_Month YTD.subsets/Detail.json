@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Detail",
+	"Alias":"Caption",
+	"Expression":"{{TM1FILTERBYLEVEL(TM1SUBSETALL([A_Month].[A_Month YTD]) , 0)}}"
+}

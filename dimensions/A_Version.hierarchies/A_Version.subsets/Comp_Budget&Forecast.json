@@ -1,0 +1,14 @@
+{
+	"@type":"Subset",
+	"Name":"Comp_Budget&Forecast",
+	"Alias":"Caption",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('A_Version')/Hierarchies('A_Version')/Elements('Version 1')"
+		},
+		{
+			"@id":"Dimensions('A_Version')/Hierarchies('A_Version')/Elements('Forecast')"
+		}
+	]
+}

@@ -1,0 +1,31 @@
+{
+	"@type":"MDXView",
+	"Name":"01 - Small - WS",
+	"MDX@Code.link":"01 - Small - WS.mdx",
+	"Meta": {
+		"Aliases": {},
+		"ExpandAboves": {
+			"[plan_source].[plan_source]": false,
+			"[plan_chart_of_accounts].[plan_chart_of_accounts]": false,
+			"[plan_version].[plan_version]": false,
+			"[plan_department].[plan_department]": false,
+			"[plan_exchange_rates].[plan_exchange_rates]": false,
+			"[plan_business_unit].[plan_business_unit]": false,
+			"[plan_time].[plan_time]": false
+		},
+		"ContextSets": {
+			"[plan_source].[plan_source]": {
+				"Expression": "{DRILLDOWNMEMBER({[plan_source].[plan_source].[budget]} , {[plan_source].[plan_source].[budget]} , RECURSIVE)}"
+			},
+			"[plan_version].[plan_version]": {
+				"Expression": "{[plan_version].[plan_version].[FY 2004 Budget]}"
+			},
+			"[plan_department].[plan_department]": {
+				"Expression": "{DRILLDOWNMEMBER({[plan_department].[plan_department].[1000]} , {[plan_department].[plan_department].[1000],[plan_department].[plan_department].[100]} , RECURSIVE)}"
+			},
+			"[plan_business_unit].[plan_business_unit]": {
+				"Expression": "{DRILLDOWNMEMBER({[plan_business_unit].[plan_business_unit].[10000]} , {[plan_business_unit].[plan_business_unit].[10000]} , RECURSIVE)}"
+			}
+		}
+	}
+}

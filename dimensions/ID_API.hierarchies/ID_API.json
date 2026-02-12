@@ -1,0 +1,16 @@
+{
+	"@type":"Hierarchy",
+	"Name":"ID_API",
+	"Elements":
+	[
+		{
+			"Name":"API_Key",
+			"Type":"String"
+		},
+		{
+			"Name":"Tenant_ID",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

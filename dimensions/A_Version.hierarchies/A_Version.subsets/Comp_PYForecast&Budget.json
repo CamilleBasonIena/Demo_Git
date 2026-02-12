@@ -1,0 +1,14 @@
+{
+	"@type":"Subset",
+	"Name":"Comp_PYForecast&Budget",
+	"Alias":"Caption",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('A_Version')/Hierarchies('A_Version')/Elements('PY Forecast')"
+		},
+		{
+			"@id":"Dimensions('A_Version')/Hierarchies('A_Version')/Elements('Version 1')"
+		}
+	]
+}

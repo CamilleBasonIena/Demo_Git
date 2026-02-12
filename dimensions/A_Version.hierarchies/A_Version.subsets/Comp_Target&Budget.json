@@ -1,0 +1,14 @@
+{
+	"@type":"Subset",
+	"Name":"Comp_Target&Budget",
+	"Alias":"Caption",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('A_Version')/Hierarchies('A_Version')/Elements('Target')"
+		},
+		{
+			"@id":"Dimensions('A_Version')/Hierarchies('A_Version')/Elements('Version 1')"
+		}
+	]
+}

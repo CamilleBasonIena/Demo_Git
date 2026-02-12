@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Statistics",
+	"Alias":"Caption",
+	"Expression":"{{DISTINCT({[A_Account].[A_Account].[Statistics], DESCENDANTS([A_Account].[A_Account].[Statistics], 99 , LEAVES)})}}"
+}

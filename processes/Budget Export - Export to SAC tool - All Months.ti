@@ -1,0 +1,23 @@
+#region Prolog
+DataSourceType = 'SUBSET';
+IF ( p_MTDorYTD @= 'YTD' );
+    sSubset = 'All_YTD_Months';
+ELSEIF(p_MTDorYTD @= 'MTD' );
+    sSubset = 'All_MTD_Months';
+ELSE;
+    ItemReject( 'Param p_Month faux' );
+    ProcessError();
+ENDIF;
+DatasourceDimensionSubset = sSubset ;
+
+#endregion
+#region Data
+# Budget Export - Export to SAC tool - Pers Cost MTD
+#  'S:\prod\HRAnalytics_Share\Administration\Export\HDR\Cockpit'
+ExecuteProcess( p_Process, 'pFilePath', pFilePath , 'p_Year', p_Year , 'p_Month' ,vMonth , 'p_Entity' , p_Entity , 'p_Phase' , p_Phase , 'p_Version' , p_Version  );
+
+# Pause TI for 5 Seconds
+nSleep = 15000;
+sleep ( nSleep );
+
+#endregion

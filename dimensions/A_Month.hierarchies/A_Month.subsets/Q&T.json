@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Q&T",
+	"ExpandAbove":true,
+	"Expression":"{{DRILLDOWNMEMBER({[A_Month].[A_Month].[Year]}, {[A_Month].[A_Month].[Year]}, RECURSIVE)}}"
+}

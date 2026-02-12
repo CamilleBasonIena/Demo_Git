@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Default",
+	"Alias":"Caption",
+	"Expression":"{DESCENDANTS([A_Organization].[A_Organization].[Total Company])}"
+}
