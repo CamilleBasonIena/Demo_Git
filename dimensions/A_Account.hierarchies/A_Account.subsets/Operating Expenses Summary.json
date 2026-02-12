@@ -1,7 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"Operating Expenses Summary",
-	"ExpandAbove":true,
-	"Alias":"Caption",
-	"Expression":"{DRILLDOWNMEMBER({[A_Account].[A_Account].[TE]} , {[A_Account].[A_Account].[TE]} , RECURSIVE)}"
-}

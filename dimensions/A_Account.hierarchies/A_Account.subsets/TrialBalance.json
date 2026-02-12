@@ -1,7 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"TrialBalance",
-	"ExpandAbove":true,
-	"Alias":"Caption",
-	"Expression":"{EXCEPT(DISTINCT(DESCENDANTS([A_Account].[A_Account].[Trial Balance])) , {[A_Account].[A_Account].[Trial Balance]})}"
-}

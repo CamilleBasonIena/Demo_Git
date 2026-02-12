@@ -1,6 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"YTD",
-	"Alias":"Caption",
-	"Expression":"{DESCENDANTS({[A_Month].[A_Month YTD].DEFAULTMEMBER} , 1 , SELF_AND_BEFORE)}"
-}

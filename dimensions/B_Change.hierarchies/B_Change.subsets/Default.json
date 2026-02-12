@@ -1,5 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"Default",
-	"Expression":"[B_Change].[B_Change].MEMBERS"
-}

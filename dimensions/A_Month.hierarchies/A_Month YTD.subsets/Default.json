@@ -1,5 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"Default",
-	"Expression":"[A_Month].[A_Month YTD].MEMBERS"
-}

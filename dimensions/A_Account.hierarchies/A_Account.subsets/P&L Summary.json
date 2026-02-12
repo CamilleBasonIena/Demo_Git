@@ -1,7 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"P&L Summary",
-	"ExpandAbove":true,
-	"Alias":"Caption",
-	"Expression":"{DRILLDOWNMEMBER(DRILLDOWNMEMBER({[A_Account].[A_Account].[NPAA]} , {[A_Account].[A_Account].[NPAA],[A_Account].[A_Account].[NP],[A_Account].[A_Account].[ROC],[A_Account].[A_Account].[TE]} , RECURSIVE) , {[A_Account].[A_Account].[NPBT],[A_Account].[A_Account].[ROC],[A_Account].[A_Account].[TE]} , RECURSIVE)}"
-}

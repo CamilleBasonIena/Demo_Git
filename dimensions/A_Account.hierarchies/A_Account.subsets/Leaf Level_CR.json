@@ -1,5 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"Leaf Level_CR",
-	"Expression":"{{FILTER(TM1FILTERBYLEVEL(TM1SUBSETALL([A_Account].[A_Account]) , 0), ([A_Account].[A_Account].CURRENTMEMBER.PROPERTIES(\"Account Type\") = \"R\"))}}"
-}

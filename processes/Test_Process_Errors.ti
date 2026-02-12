@@ -1,7 +1,0 @@
-#region Prolog
-
-ItemReject( 'Test PAaaS logs' );
-
-ProcessError();
-
-#endregion

@@ -1,6 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"Advanced Input",
-	"Alias":"Caption",
-	"Expression":"{[A_Month].[A_Month].[DriverOrProfile],[A_Month].[A_Month].[BaseLine],[A_Month].[A_Month].[Adjustment],[A_Month].[A_Month].[% Change],EXCEPT(DISTINCT(DESCENDANTS([A_Month].[A_Month].[Year])) , {[A_Month].[A_Month].[Q1],[A_Month].[A_Month].[Q2],[A_Month].[A_Month].[Q3],[A_Month].[A_Month].[Q4]}),[A_Month].[A_Month].[Description]}"
-}

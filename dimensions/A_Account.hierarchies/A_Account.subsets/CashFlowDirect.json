@@ -1,6 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"CashFlowDirect",
-	"ExpandAbove":true,
-	"Expression":"{DISTINCT(DESCENDANTS([A_Account].[A_Account].[Cash Flow (Direct Method)]))}"
-}

@@ -1,7 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"Opex - Liste",
-	"ExpandAbove":true,
-	"Alias":"Caption",
-	"Expression":"{{DESCENDANTS([A_Account].[A_Account].[TE])}}"
-}

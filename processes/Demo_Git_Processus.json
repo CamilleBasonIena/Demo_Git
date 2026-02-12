@@ -1,0 +1,13 @@
+{
+	"@type":"Process",
+	"Name":"Demo_Git_Processus",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"Demo_Git_Processus.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":[],
+	"Variables":[],
+	"VariablesUIData": []
+}

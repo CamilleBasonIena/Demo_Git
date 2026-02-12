@@ -1,7 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"P&L Detail",
-	"ExpandAbove":true,
-	"Alias":"Caption",
-	"Expression":"{{DISTINCT({DESCENDANTS([A_Account].[A_Account].[NPAA])})}}"
-}

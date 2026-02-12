@@ -1,7 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"MultiLines",
-	"ExpandAbove":true,
-	"Alias":"Caption",
-	"Expression":"{{FILTER(TM1SubsetAll([A_Account].[A_Account]), ([A_Account].[A_Account].CURRENTMEMBER.PROPERTIES(\"MultiLine\") = \"Yes\"))}}"
-}

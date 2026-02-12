@@ -1,6 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"Versions Courantes et Archivées",
-	"Alias":"Caption",
-	"Expression":"{{DRILLDOWNMEMBER({[A_Version].[A_Version].[Open Versions]}, {[A_Version].[A_Version].[Open Versions]}, RECURSIVE)},{DRILLDOWNMEMBER({[A_Version].[A_Version].[Archived Versions]}, {[A_Version].[A_Version].[Archived Versions]}, RECURSIVE)}}"
-}

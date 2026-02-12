@@ -1,6 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"Eliminations",
-	"Alias":"Caption",
-	"Expression":"{{TM1FILTERBYPATTERN(TM1SubsetAll([A_Organization].[A_Organization]),\"*G*\",\"MEMBER_NAME\")}}"
-}

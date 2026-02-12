@@ -1,6 +1,0 @@
-{
-	"@type":"Subset",
-	"Name":"Toto",
-	"Alias":"MEMBER_NAME",
-	"Expression":"TM1IGNORE_BADTUPLES {{[plan_version].[plan_version].Levels(0).MEMBERS}}"
-}
